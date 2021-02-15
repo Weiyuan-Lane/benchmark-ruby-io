@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  api:
+    image: 'ruby:2.7.2-alpine3.13'
+    working_dir: /opt/service
+    environment:
+      - HOME_DIR=/opt/service
+    command: /opt/service/run.sh
+    volumes:
+      - .:/opt/service/
