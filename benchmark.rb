@@ -131,7 +131,7 @@ end
 
 def mem_benchmark_with_new_file
     limit = 25000
-    chunks = 100
+    chunks = 10
 
     Benchmark.memory do |x|
         x.report("Write all lines to file at once, mode \"w\"") { file_open_write_v1('log1-w', 'w', limit) }
@@ -154,10 +154,10 @@ def mem_benchmark_with_new_file
         x.report("Iterate and write per line to file chunks, mode \"w+\"") { file_open_write_v3('log3-wp', 'w+', limit, chunks) }
         x.report("Iterate and write per line to file chunks, mode \"a+\"") { file_open_write_v3('log3-ap', 'a+', limit, chunks) }
 
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"w\"") { file_open_write_v3_1('log3_1-w', 'w', limit) }
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"a\"") { file_open_write_v3_1('log3_1-a', 'a', limit) }
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"w+\"") { file_open_write_v3_1('log3_1-wp', 'w+', limit) }
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"a+\"") { file_open_write_v3_1('log3_1-ap', 'a+', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"w\"") { file_open_write_v3_1('log3_1-w', 'w', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"a\"") { file_open_write_v3_1('log3_1-a', 'a', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"w+\"") { file_open_write_v3_1('log3_1-wp', 'w+', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"a+\"") { file_open_write_v3_1('log3_1-ap', 'a+', limit) }
 
         x.report("Iterate and write per line to file chunks (manual), mode \"w\"") { file_open_write_v3_2('log3_2-w', 'w', limit, chunks) }
         x.report("Iterate and write per line to file chunks (manual), mode \"a\"") { file_open_write_v3_2('log3_2-a', 'a', limit, chunks) }
@@ -183,10 +183,10 @@ def mem_benchmark_with_new_file
     delete_file_chunk('log3-a', chunks)
     delete_file_chunk('log3-wp', chunks)
     delete_file_chunk('log3-ap', chunks)
-    # delete_file_chunk('log3_1-w', chunks)
-    # delete_file_chunk('log3_1-a', chunks)
-    # delete_file_chunk('log3_1-wp', chunks)
-    # delete_file_chunk('log3_1-ap', chunks)
+    delete_file_chunk('log3_1-w', chunks)
+    delete_file_chunk('log3_1-a', chunks)
+    delete_file_chunk('log3_1-wp', chunks)
+    delete_file_chunk('log3_1-ap', chunks)
     delete_file_chunk('log3_2-w', chunks)
     delete_file_chunk('log3_2-a', chunks)
     delete_file_chunk('log3_2-wp', chunks)
@@ -195,7 +195,7 @@ end
 
 def cpu_benchmark_with_new_file
     limit = 25000
-    chunks = 100
+    chunks = 10
 
     Benchmark.bm(59) do |x|
         x.report("Write all lines to file at once, mode \"w\"                      ") { file_open_write_v1('log1-w', 'w', limit) }
@@ -218,10 +218,10 @@ def cpu_benchmark_with_new_file
         x.report("Iterate and write per line to file chunks, mode \"w+\"           ") { file_open_write_v3('log3-wp', 'w+', limit, chunks) }
         x.report("Iterate and write per line to file chunks, mode \"a+\"           ") { file_open_write_v3('log3-ap', 'a+', limit, chunks) }
 
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"w\" ") { file_open_write_v3_1('log3_1-w', 'w', limit) }
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"a\" ") { file_open_write_v3_1('log3_1-a', 'a', limit) }
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"w+\"") { file_open_write_v3_1('log3_1-wp', 'w+', limit) }
-        # x.report("Iterate and write per line to file chunks (hardcode), mode \"a+\"") { file_open_write_v3_1('log3_1-ap', 'a+', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"w\" ") { file_open_write_v3_1('log3_1-w', 'w', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"a\" ") { file_open_write_v3_1('log3_1-a', 'a', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"w+\"") { file_open_write_v3_1('log3_1-wp', 'w+', limit) }
+        x.report("Iterate and write per line to file chunks (hardcode), mode \"a+\"") { file_open_write_v3_1('log3_1-ap', 'a+', limit) }
 
         x.report("Iterate and write per line to file chunks (manual), mode \"w\"   ") { file_open_write_v3_2('log3_2-w', 'w', limit, chunks) }
         x.report("Iterate and write per line to file chunks (manual), mode \"a\"   ") { file_open_write_v3_2('log3_2-a', 'a', limit, chunks) }
@@ -245,10 +245,10 @@ def cpu_benchmark_with_new_file
     delete_file_chunk('log3-a', chunks)
     delete_file_chunk('log3-wp', chunks)
     delete_file_chunk('log3-ap', chunks)
-    # delete_file_chunk('log3_1-w', chunks)
-    # delete_file_chunk('log3_1-a', chunks)
-    # delete_file_chunk('log3_1-wp', chunks)
-    # delete_file_chunk('log3_1-ap', chunks)
+    delete_file_chunk('log3_1-w', chunks)
+    delete_file_chunk('log3_1-a', chunks)
+    delete_file_chunk('log3_1-wp', chunks)
+    delete_file_chunk('log3_1-ap', chunks)
     delete_file_chunk('log3_2-w', chunks)
     delete_file_chunk('log3_2-a', chunks)
     delete_file_chunk('log3_2-wp', chunks)
